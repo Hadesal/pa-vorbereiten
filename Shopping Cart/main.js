@@ -26,7 +26,7 @@ const products = [
     {
         id: 5,
         name: "Pizza",
-        image: "https://images.trenta.ro/Products/Original/Quattro_Stagioni_Amestecata_-_Meniu-3691.jpg",
+        image: "https://www.gutekueche.at/storage/media/recipe/41494/resp/pizza-selber-machen-grundrezept___webp_620_413.webp",
         price: "176"
     },
     {
@@ -38,28 +38,29 @@ const products = [
 ]
 
 
+let maxSum = document.querySelector('input');
+
+console.log(maxSum)
 
 function addItemToCart(clickEvent) {
     clickEvent.target.disabled = true;
-    // let array = clickEvent.target.innerText.split(" ");
-    // let totalCost = parseInt(total.innerText);
-    // let productValue = parseInt(array.pop());
+    let array = clickEvent.target.innerText.split(" ");
+    let totalCost = parseInt(total.innerText);
+    let productValue = parseInt(array.pop());
     
-    // total.innerText = totalCost + productValue;
-    // checkOverBudget()
+    total.innerText = totalCost + productValue;
+    checkOverBudget()
 }
 
-// function checkOverBudget() {
-//     if(parseInt(total.innerText) > parseInt(maxSum.value)){
-//         total.classList.add('over-budget');
-//         total.style.color = 'red';
-//     } else {
-//         total.classList.remove('over-budget');
-//         total.style.color = 'black';
-//     }
-// }
-
-// maxSum.addEventListener('input', checkOverBudget);
+function checkOverBudget() {
+    if(parseInt(total.innerText) > parseInt(maxSum.value)){
+        total.classList.add('over-budget');
+        total.style.color = 'red';
+    } else {
+        total.classList.remove('over-budget');
+        total.style.color = 'black';
+    }
+}
 
 
 
