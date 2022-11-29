@@ -1,0 +1,36 @@
+.dice {
+  height: 150px;
+  width: 150px;
+  text-align: center;
+  line-height: 150px;
+  margin: 10px
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+div > button {
+  width: 100%;
+}
+
+#dice3 {
+    background-color: red;
+}
+
+#dice6 {
+    background-color: green;
+}
+
+#dice9 {
+    background-color: chocolate;
+}
+
+.hide {
+  display: none;
+}

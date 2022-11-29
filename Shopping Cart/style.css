@@ -1,0 +1,50 @@
+.products {
+    width: 80vw;
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.item {
+    border: 3px solid black;
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.item > * {
+    width: 100%;
+}
+
+.name {
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.total {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    background: beige;
+    padding: 5px;
+    display: flex;
+}
+
+.separator {
+    flex: 1;
+}
+
+.total > * {
+    margin-right: 10px;
+}
+
+.over-budget {
+    color: red;
+}
