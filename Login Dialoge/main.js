@@ -1,39 +1,24 @@
 let email = document.querySelector('#email');
 let password = document.querySelector('#password');
-let submitBtn = document.querySelector('#submit');
+let submit = document.querySelector('#submit');
 let messagebox = document.querySelector('#messagebox');
-let passwordIsValid;
-let emailIsValid;
 
-submitBtn.addEventListener('click', () =>{
-    // email validation
-    if(email.value.indexOf('@') === -1){
-        emailIsValid = false;
-    } else{
-        emailIsValid = true;
-    }
-    if(password.value.length < 10){
-        passwordIsValid = false;
-    } else{
-        passwordIsValid = true;
-    }
 
-    //email Msg
-    
-     if(!emailIsValid){
-        messagebox.classList.add('fail-msg')
-        emailErrorMsg = 'email is invalid must contain @'
-        messagebox.textContent = emailErrorMsg
+submit.addEventListener('click', () =>{
+let emailVal = email.value;
+let passwordVal = password.value.length;
 
-    } else if(!passwordIsValid){
-        messagebox.classList.add('fail-msg')
-        passwordErrorMsg = 'password length min. 10'
-        messagebox.textContent = passwordErrorMsg
-
-    } else if(emailIsValid && passwordIsValid){
-        messagebox.classList.remove('fail-msg')
-        messagebox.classList.add('good-msg')
-        messagebox.textContent = 'Account created'
-    }
+if(emailVal.indexOf('@') === -1 ){
+    messagebox.classList.add('fail-msg');
+    messagebox.textContent = 'invalid email';
+} else if(passwordVal < 10){
+    messagebox.classList.add('fail-msg');
+    messagebox.textContent = 'password too short';
+} else{
+    messagebox.classList.remove('fail-msg');
+    messagebox.classList.add('good-msg');
+    messagebox.textContent = 'Account created';
+}
 })
 
+// time 16:45 min

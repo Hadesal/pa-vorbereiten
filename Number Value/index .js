@@ -1,34 +1,33 @@
-let input = document.querySelector("#input");
-let validator = document.querySelector("#validator");
-let maximum = document.querySelector("#maximum");
+let input = document.querySelector('#input');
+let validator = document.querySelector('#validator');
+let maximum = document.querySelector('#maximum');
 
-let numberValidation;
-let numberOnPage = parseInt(maximum.textContent);
+setInterval(checkifEmpty,1000);
 
-
-
-input.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    number = parseInt(input.value);
-
-    if (isNaN(number)) {
-      validator.classList.add("invalid");
-      validator.textContent = "Not a valid number";
-    } else {
-      validator.classList.add("valid");
-      validator.textContent = "valid number";
-      highestValue = Math.max(numberOnPage, number);
-      maximum.textContent = highestValue;
-      numberOnPage = highestValue;
+input.addEventListener('keyup', () =>{
+    let number = parseInt(input.value);
+    
+    if(isNaN(number)){
+        validator.classList.remove('valid');
+        validator.classList.add('invalid');
+        validator.textContent = 'Not a valid number';
+    } else{
+        validator.classList.remove('invalid');
+        validator.classList.add('valid');
+        validator.textContent = 'Valid number';
+        if(number > maximum.textContent){
+            maximum.textContent = number;
+        }
     }
-  }
-});
 
-setInterval(checkInput,1000);
+})
 
-function checkInput(){
+function checkifEmpty(){
     if(input.value.length === 0){
-        validator.textContent = ''
+        validator.classList.remove('invalid'); 
+        validator.classList.remove('valid');
+        validator.textContent = '';
     }
 }
 
+//Time 15:14 min

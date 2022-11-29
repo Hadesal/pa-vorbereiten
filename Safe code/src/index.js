@@ -1,44 +1,53 @@
-const messageResult = document.querySelector('#result');
-let input = document.querySelector('input');
+input = document.querySelector('#input');
+
+
+setInterval(checkForCode,10)
 
 const buttons = document.querySelectorAll('button');
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', e => {
-    processSafeButton(e.target.innerText);
     if(e.target.innerText === 'C'){
-      messageResult.innerText = messageResult.innerText.slice(1)
+      erase();
     }
+
+    processSafeButton(e.target.innerText);
+
   })
 }
 
+const messageResult = document.querySelector('#result');
 let safeCombination = '1234';
-
 function processSafeButton(pressedNumber) {
-
-  if(safeCombination.indexOf(pressedNumber) !== -1){
+  if(safeCombination.indexOf(pressedNumber) > -1){
     messageResult.innerText += pressedNumber;
   }
 }
 
-input.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    safeCombination = input.value
-    console.log(input.value)
+
+input.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    safeCombination = input.value;    
+    input.value = '';
+    messageResult.innerText = '';
   }
-  
-})
+  });
 
-input.onchange = function() {
-  input.value = ''
-}
-
-function checkValid(){
-
-  if(messageResult.innerText === safeCombination){
-    messageResult.innerText = 'OPEN'
+  function checkForCode () {
+    if(safeCombination[safeCombination.length - 1] === messageResult.innerText[messageResult.innerText.length - 1]){
+      messageResult.innerText = 'Save OPEN'
+    }
   }
-}
 
-setInterval(checkValid,10)
+  // time 21.55 min
+
+
+
+
+
+function erase() {
+  let arr = messageResult.innerText.split('');
+  arr.pop();
+  messageResult.innerText = arr.join('');
+}
 
 
