@@ -1,59 +1,45 @@
-let nameInput = document.querySelector('#name');
-let scoreInput = document.querySelector('#score');
-let addBtn = document.querySelector('#but1');
-let textDisp = document.querySelector('#scores');
-let deleteSmBtn = document.querySelector('#but2');
+let nameInput = document.querySelector("#name");
+let scoreInput = document.querySelector("#score");
+let addBtn = document.querySelector("#but1");
+let textDisp = document.querySelector("#scores");
+let deleteSmBtn = document.querySelector("#but2");
 let isString = false;
-
-
-addBtn.addEventListener('click', () =>{
-    checkInp();
-    if(isString){  
-        scoreInput.value = '';
-        isString = false;
-    } else{
+let results = [];
+addBtn.addEventListener("click", () => {
+  checkInp();
+  if (isString) {
+    scoreInput.value = "";
+    isString = false;
+  } else {
     let name = nameInput.value;
     let score = scoreInput.value;
-    results.push(`${name} - ${score}`)
-    console.log(results)
+    results.push(`${name} - ${score}`);
     textDisp.textContent = results;
-    nameInput.value = '';
-    scoreInput.value = '';
-}
-})
-deleteSmBtn.addEventListener('click', () =>{
-    let smallest = [];
-    let sorted = []
-for(let i = 0; i < results.length; i++){
-    let a = results[i].split(' ');
-    sorted.push(results[i].split(' '))
-    smallest.push((parseInt(a[2])));
-}
-smallest.sort(function(a, b){return a-b})
-let smallestScore = smallest[0].toString()
-let joined = results.join();
-let index = joined.indexOf(smallestScore)
-let splicedScore = joined.slice(index + (smallestScore.length) + 1)
-results = splicedScore;
-textDisp.textContent = results;
+    nameInput.value = "";
+    scoreInput.value = "";
+    console.log(results);
+  }
+});
+deleteSmBtn.addEventListener("click", () => {
+  let a = results.join();
+  let matchNumber = a.match(/\d+/g);
+  matchNumber.sort(function (a, b) {
+    return a - b;
+  });
 
-console.log(smallestScore)
-console.log(index)
-console.log(joined);
-console.log(splicedScore);
+  results.map((val, ind) => {
+    if (val.match(matchNumber[0])) {
+      results.splice(ind, 1);
+      textDisp.textContent = results;
+    }
+  });
+});
 
-
-})
-
-
-function checkInp()
-{
+function checkInp() {
   var x = scoreInput.value;
-  if (isNaN(x)) 
-  {
+  if (isNaN(x)) {
     alert("Must input numbers");
     isString = true;
-  } else{
-
+  } else {
   }
 }
